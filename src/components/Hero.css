@@ -319,6 +319,10 @@
   .floating-element {
     font-size: 1.5rem;
   }
+  
+  .hero-scroll-indicator {
+    bottom: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -343,6 +347,7 @@
   .paddle-placeholder {
     width: 200px;
     height: 200px;
+    margin-bottom: 60px; /* Add space below paddle for scroll indicator */
   }
   
   .paddle-image {
@@ -358,5 +363,35 @@
   .paddle-grip {
     width: 20px;
     height: 40px;
+  }
+  
+  .hero-scroll-indicator {
+    bottom: 15px;
+    font-size: 12px;
+  }
+  
+  .scroll-arrow {
+    height: 25px;
+  }
+  
+  .scroll-arrow::after {
+    width: 6px;
+    height: 6px;
+    left: -2px;
+  }
+}
+
+/* iPhone-specific adjustments */
+@media (max-width: 390px) {
+  .paddle-placeholder {
+    margin-bottom: 80px; /* Even more space on very small screens */
+  }
+  
+  .hero-scroll-indicator {
+    bottom: 10px;
+  }
+  
+  .floating-element {
+    font-size: 1.2rem;
   }
 }
