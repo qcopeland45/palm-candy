@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Header.css'
+import headerImage from '../assets/palmcandy-header.png'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -15,41 +16,42 @@ const Header = () => {
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <div className="header-content">
-          {/* Logo placeholder - replace with your actual logo */}
-          <div className="logo">
-            <div className="logo-placeholder">
-              <span className="logo-text">PALM CANDY</span>
-              <span className="logo-subtitle">LOGO</span>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="nav-desktop">
+      {/* Essential Navigation - Positioned above the designer's header */}
+      <div className="nav-top">
+        <div className="container">
+          <nav className="nav-essential">
             <a href="#home" className="nav-link">Home</a>
             <a href="#features" className="nav-link">Features</a>
-            <a href="#prelaunch" className="nav-link">Join Waitlist</a>
+            <a href="#prelaunch" className="nav-link btn btn-primary">Join Waitlist</a>
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        <nav className={`nav-mobile ${isMobileMenuOpen ? 'open' : ''}`}>
-          <a href="#home" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-          <a href="#features" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
-          <a href="#prelaunch" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Join Waitlist</a>
-        </nav>
       </div>
+
+      {/* Designer's Full-Width Header Space */}
+      <div className="designer-header-full">
+        <img 
+          src={headerImage}
+          alt="Palm Candy Header"
+          className="header-image"
+        />
+      </div>
+
+      {/* Mobile Menu Button - Positioned absolutely for overlay */}
+      <button 
+        className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      {/* Mobile Navigation */}
+      <nav className={`nav-mobile ${isMobileMenuOpen ? 'open' : ''}`}>
+        <a href="#home" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+        <a href="#features" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
+        <a href="#prelaunch" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Join Waitlist</a>
+      </nav>
     </header>
   )
 }

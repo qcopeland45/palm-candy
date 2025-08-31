@@ -1,17 +1,20 @@
 :root {
-  /* Palm Candy Brand Colors */
-  --primary: #FF6B35; /* Vibrant Orange - energetic and fun */
-  --secondary: #4ECDC4; /* Teal - fresh and modern */
-  --accent: #FFE66D; /* Bright Yellow - playful and energetic */
-  --dark: #2C3E50; /* Dark Blue-Gray - professional */
-  --light: #F7F9FC; /* Light Gray - clean and modern */
+  /* Palm Candy Brand Colors - Charcoal, Greys, Whites */
+  --primary: #2C3E50; /* Charcoal - sophisticated and modern */
+  --secondary: #34495E; /* Dark Grey - elegant accent */
+  --accent: #95A5A6; /* Medium Grey - subtle highlight */
+  --dark: #1A1A1A; /* Deep Charcoal - rich and deep */
+  --light: #ECF0F1; /* Light Grey - clean and airy */
   --white: #FFFFFF;
-  --black: #1A1A1A;
+  --black: #000000;
   
-  /* Additional brand colors */
-  --purple: #9B59B6; /* For artistic collaborations */
-  --pink: #E91E63; /* For pop culture vibes */
-  --green: #2ECC71; /* For fresh energy */
+  /* Additional muted colors */
+  --charcoal: #2C3E50; /* Main charcoal */
+  --charcoal-light: #34495E; /* Lighter charcoal */
+  --charcoal-dark: #1A1A1A; /* Darker charcoal */
+  --grey: #95A5A6; /* Medium grey */
+  --grey-light: #BDC3C7; /* Light grey */
+  --grey-dark: #7F8C8D; /* Dark grey */
 }
 
 * {
@@ -23,18 +26,107 @@
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
-  color: var(--dark);
-  background-color: var(--white);
+  color: var(--white);
+  background: 
+    /* Base stone color with natural variations */
+    linear-gradient(45deg, #1a1a1a 0%, #2c3e50 15%, #34495e 30%, #2c3e50 45%, #1a1a1a 60%, #2c3e50 75%, #34495e 90%, #1a1a1a 100%),
+    /* Multiple radial overlays for depth */
+    radial-gradient(circle at 15% 25%, rgba(44, 62, 80, 0.9) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(52, 73, 94, 0.8) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(26, 26, 26, 0.95) 0%, transparent 60%),
+    radial-gradient(circle at 75% 15%, rgba(44, 62, 80, 0.7) 0%, transparent 35%),
+    radial-gradient(circle at 25% 85%, rgba(52, 73, 94, 0.6) 0%, transparent 50%),
+    /* Additional depth layers */
+    radial-gradient(ellipse 200px 100px at 30% 40%, rgba(44, 62, 80, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 150px 80px at 70% 60%, rgba(52, 73, 94, 0.3) 0%, transparent 65%);
+  background-attachment: fixed;
   overflow-x: hidden;
   text-align: center; /* Ensure text is centered */
+  position: relative;
 }
 
+/* Add realistic stone texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    /* Primary stone grain pattern */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.08) 1px,
+      rgba(0, 0, 0, 0.08) 3px
+    ),
+    /* Secondary cross-hatch pattern */
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.05) 2px,
+      rgba(0, 0, 0, 0.05) 5px
+    ),
+    /* Horizontal stone layers */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 8px,
+      rgba(0, 0, 0, 0.03) 8px,
+      rgba(0, 0, 0, 0.03) 12px
+    ),
+    /* Vertical stone cleavages */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 15px,
+      rgba(0, 0, 0, 0.04) 15px,
+      rgba(0, 0, 0, 0.04) 20px
+    ),
+    /* Random stone imperfections */
+    repeating-linear-gradient(
+      30deg,
+      transparent,
+      transparent 6px,
+      rgba(0, 0, 0, 0.06) 6px,
+      rgba(0, 0, 0, 0.06) 9px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Add additional stone depth and natural variations */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    /* Natural stone color variations */
+    radial-gradient(circle at 20% 30%, rgba(44, 62, 80, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(52, 73, 94, 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 40% 60%, rgba(26, 26, 26, 0.25) 0%, transparent 40%),
+    /* Stone surface irregularities */
+    radial-gradient(ellipse 300px 150px at 60% 20%, rgba(44, 62, 80, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 200px 100px at 10% 80%, rgba(52, 73, 94, 0.12) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content appears above texture */
 .App {
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center; /* Center the entire app */
+  position: relative;
+  z-index: 2;
 }
 
 /* Smooth scrolling */
@@ -52,12 +144,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--charcoal);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: var(--charcoal-light);
 }
 
 /* Button styles */
@@ -77,24 +169,24 @@ html {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--charcoal), var(--charcoal-light));
   color: var(--white);
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: var(--charcoal);
+  border: 2px solid var(--charcoal);
 }
 
 .btn-secondary:hover {
-  background: var(--primary);
+  background: var(--charcoal);
   color: var(--white);
 }
 
