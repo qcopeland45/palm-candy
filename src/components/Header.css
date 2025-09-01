@@ -90,7 +90,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(44, 62, 80, 0.9);
+  background: transparent;
   position: relative;
   overflow: hidden;
   transform: translateZ(0);
