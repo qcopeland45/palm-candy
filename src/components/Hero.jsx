@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import './Hero.css'
 
 const Hero = ({ scrollY }) => {
@@ -6,6 +6,7 @@ const Hero = ({ scrollY }) => {
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
   const carouselRef = useRef(null)
+  const intervalRef = useRef(null)
   
   // Sample images - replace with your actual images later
   const carouselImages = [
@@ -17,25 +18,52 @@ const Hero = ({ scrollY }) => {
     '/placeholder-6.jpg'
   ]
 
-  // Auto-advance carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
+  // Function to start the auto-advance timer
+  const startTimer = useCallback(() => {
+    // Clear any existing timer
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    
+    // Start new timer
+    intervalRef.current = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length)
     }, 4000) // Change image every 4 seconds
-
-    return () => clearInterval(interval)
   }, [carouselImages.length])
+
+  // Function to reset the timer
+  const resetTimer = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    startTimer()
+  }, [startTimer])
+
+  // Auto-advance carousel
+  useEffect(() => {
+    startTimer()
+    
+    // Cleanup on unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [startTimer])
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length)
+    resetTimer() // Reset timer when manually navigating
   }
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)
+    resetTimer() // Reset timer when manually navigating
   }
 
   const goToImage = (index) => {
     setCurrentImageIndex(index)
+    resetTimer() // Reset timer when manually navigating
   }
 
   // Touch event handlers for mobile swipe
