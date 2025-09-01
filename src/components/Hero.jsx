@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './Hero.css'
 
 const Hero = ({ scrollY }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+  const carouselRef = useRef(null)
   
   // Sample images - replace with your actual images later
   const carouselImages = [
@@ -33,6 +36,34 @@ const Hero = ({ scrollY }) => {
 
   const goToImage = (index) => {
     setCurrentImageIndex(index)
+  }
+
+  // Touch event handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextImage()
+    }
+    if (isRightSwipe) {
+      prevImage()
+    }
+
+    // Reset values
+    setTouchStart(null)
+    setTouchEnd(null)
   }
 
   return (
@@ -102,7 +133,13 @@ const Hero = ({ scrollY }) => {
       <section className="hero-carousel-section">
         <div className="hero-carousel">
           <div className="carousel-container">
-            <div className="carousel-track" style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}>
+            <div 
+              className="carousel-track" 
+              style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               {carouselImages.map((image, index) => (
                 <div key={index} className="carousel-slide">
                   <div className="carousel-image-placeholder">

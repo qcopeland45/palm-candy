@@ -64,17 +64,25 @@ const PreLaunchForm = () => {
     setIsSubmitting(true)
     
     try {
-      // TODO: Replace with your sheets.best endpoint
-      // const response = await fetch('YOUR_SHEETS_BEST_ENDPOINT', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData)
-      // })
+      // Send data to Sheet Best API
+      const response = await fetch('https://api.sheetbest.com/sheets/de21604c-3c31-4c38-b6d0-edfd7a2f0f38', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FirstName: formData.firstName,
+          LastName: formData.lastName,
+          Email: formData.email,
+          PhoneNumber: formData.phone || '' // Send empty string if no phone
+        })
+      })
       
-      // Simulate API call for now
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      const result = await response.json()
       
       setSubmitStatus('success')
       setFormData({
@@ -88,6 +96,7 @@ const PreLaunchForm = () => {
       setTimeout(() => setSubmitStatus(null), 5000)
       
     } catch (error) {
+      console.error('Form submission error:', error)
       setSubmitStatus('error')
       setTimeout(() => setSubmitStatus(null), 5000)
     } finally {

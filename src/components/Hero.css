@@ -251,6 +251,12 @@
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  touch-action: pan-y pinch-zoom; /* Enable touch gestures */
+  cursor: grab; /* Show it's interactive */
+}
+
+.carousel-track:active {
+  cursor: grabbing; /* Show active touch state */
 }
 
 .carousel-slide {
@@ -259,6 +265,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none; /* Prevent text selection during swipe */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .carousel-image-placeholder {
