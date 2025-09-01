@@ -4,35 +4,49 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(44, 62, 80, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
   transition: all 0.3s ease;
 }
 
 .header.scrolled {
-  background: rgba(44, 62, 80, 0.98);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(44, 62, 80, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.header.scrolled .nav-top {
+  background: transparent;
+  backdrop-filter: none;
 }
 
 /* Top Navigation Bar */
 .nav-top {
-  background: rgba(52, 73, 94, 0.98);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: transparent;
+  border-bottom: none;
   padding: 15px 0;
+  backdrop-filter: none;
 }
 
 .nav-top .container {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 0;
 }
 
 /* Essential Navigation */
 .nav-essential {
   display: flex;
-  align-items: center;
-  gap: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .nav-link {
@@ -42,6 +56,7 @@
   transition: all 0.3s ease;
   padding: 8px 16px;
   border-radius: 8px;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -56,6 +71,7 @@
   border-radius: 25px;
   font-weight: 600;
   transition: all 0.3s ease;
+  align-self: flex-start;
 }
 
 .nav-link.btn:hover {
@@ -77,6 +93,10 @@
   background: rgba(44, 62, 80, 0.9);
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  margin-top: 0;
 }
 
 /* Header Image Styling */
@@ -86,6 +106,12 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  filter: contrast(1.05) saturate(1.02);
 }
 
 .header-placeholder {
@@ -174,6 +200,7 @@
 @media (max-width: 768px) {
   .nav-top {
     padding: 10px 0;
+    background: transparent;
   }
   
   .designer-header-full {
@@ -202,6 +229,8 @@
   
   .mobile-menu-btn {
     display: flex;
+    top: 15px;
+    right: 15px;
   }
   
   .nav-mobile {
@@ -235,8 +264,12 @@
   }
   
   .mobile-menu-btn {
-    top: 15px;
-    right: 15px;
-    padding: 8px;
+    top: 10px;
+    right: 10px;
+    padding: 6px;
+  }
+  
+  .nav-top {
+    padding: 8px 0;
   }
 }

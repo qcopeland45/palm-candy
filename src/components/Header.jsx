@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Header.css'
-import headerImage from '../assets/palmcandy-header.png'
+import headerImage from '../assets/palmcandy-header-optimized.webp'
+import headerImageFallback from '../assets/palmcandy-header-optimized.png'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,11 +30,15 @@ const Header = () => {
 
       {/* Designer's Full-Width Header Space */}
       <div className="designer-header-full">
-        <img 
-          src={headerImage}
-          alt="Palm Candy Header"
-          className="header-image"
-        />
+        <picture>
+          <source srcSet={headerImage} type="image/webp" />
+          <img 
+            src={headerImageFallback}
+            alt="Palm Candy Header"
+            className="header-image"
+            loading="eager"
+          />
+        </picture>
       </div>
 
       {/* Mobile Menu Button - Positioned absolutely for overlay */}
