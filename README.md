@@ -194,3 +194,4 @@ This project is proprietary to Palm Candy. All rights reserved.
 
 **Built with ❤️ for Palm Candy's pickleball paddle grip business**
 
+# Test token auth
