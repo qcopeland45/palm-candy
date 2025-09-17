@@ -14,7 +14,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="footer-description">
-              Revolutionizing pickleball with interchangeable grips and exclusive artist collaborations.
+              Revolutionizing pickleball with premium interchangeable overgrips and exclusive artist collaborations.
             </p>
           </div>
           

@@ -186,24 +186,26 @@ const PreLaunchForm = () => {
             
             {submitStatus === 'success' && (
               <div className="success-message">
-                🎉 Welcome to Palm Candy! You're now on our exclusive waitlist.
+                Welcome to Palm Candy! You're now on our exclusive waitlist.
               </div>
             )}
             
             {submitStatus === 'error' && (
               <div className="error-message">
-                ❌ Something went wrong. Please try again or contact us directly.
+                Something went wrong. Please try again or contact us directly.
               </div>
             )}
           </form>
           
           <div className="form-info">
             <div className="info-item">
-              <span className="info-icon">🔒</span>
+              {/* TODO - add different image */}
+              <span className="info-icon"></span>
               <span>Your information is secure and will never be shared</span>
             </div>
             <div className="info-item">
-              <span className="info-icon">📧</span>
+              {/* TODO - add different image */}
+              <span className="info-icon"></span>
               <span>We'll only contact you about Palm Candy updates</span>
             </div>
           </div>

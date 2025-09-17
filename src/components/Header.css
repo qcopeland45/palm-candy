@@ -8,6 +8,21 @@
   backdrop-filter: none;
   border-bottom: none;
   transition: all 0.3s ease;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .header {
+    top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    top: 0;
+  }
 }
 
 .header.scrolled {
@@ -38,7 +53,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-left: 0;
+  padding: 0 20px;
 }
 
 /* Essential Navigation */
@@ -83,7 +98,7 @@
 
 /* Designer's Full-Width Header Space */
 .designer-header-full {
-  width: 100%;
+  width: 100vw;
   height: 250px !important; /* Extra large height for maximum creative space */
   min-height: 250px;
   max-height: 250px;
@@ -93,10 +108,11 @@
   background: transparent;
   position: relative;
   overflow: hidden;
-  transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
-  margin-top: 0;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 0;
 }
 
 /* Header Image Styling */
@@ -112,6 +128,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   filter: contrast(1.05) saturate(1.02);
+  margin: 0;
+  padding: 0;
 }
 
 .header-placeholder {
@@ -203,10 +221,15 @@
     background: transparent;
   }
   
+  .nav-top .container {
+    padding: 0 15px;
+  }
+  
   .designer-header-full {
     height: 200px !important;
     min-height: 200px;
     max-height: 200px;
+    margin-top: 0;
   }
   
   .header-placeholder {
@@ -247,6 +270,7 @@
     height: 160px !important;
     min-height: 160px;
     max-height: 160px;
+    margin-top: 0;
   }
   
   .header-placeholder {
@@ -271,5 +295,9 @@
   
   .nav-top {
     padding: 8px 0;
+  }
+  
+  .nav-top .container {
+    padding: 0 10px;
   }
 }

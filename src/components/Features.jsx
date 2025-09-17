@@ -4,27 +4,27 @@ import './Features.css'
 const Features = ({ scrollY }) => {
   const features = [
     {
-      icon: '🔄',
-      title: 'Interchangeable Grips',
-      description: 'Switch between different grip styles and designs in seconds. No more buying new paddles for different looks!',
+      icon: '', // TODO - add different image
+      title: 'Interchangeable Overgrips',
+      description: 'Transform your paddle\'s feel and style in seconds with our revolutionary overgrip system. Express your personality without compromising performance.',
       color: 'var(--primary)'
     },
     {
-      icon: '🎨',
+      icon: '', // TODO - add different image
       title: 'Artist Collaborations',
-      description: 'Monthly drops featuring collaborations with local artists, anime creators, and pop culture icons.',
+      description: 'Exclusive partnerships with talented artists, content creators, and pop culture icons. Each collaboration brings unique designs that turn your paddle into a statement piece.',
       color: 'var(--secondary)'
     },
     {
-      icon: '🔥',
+      icon: '', // TODO - add different image
       title: 'Limited Edition Drops',
-      description: 'Exclusive designs inspired by Jordan colorways, music culture, and trending themes.',
+      description: 'Coveted designs inspired by streetwear culture, iconic colorways, and trending aesthetics. When they\'re gone, they\'re gone – secure yours before everyone else catches on.',
       color: 'var(--accent)'
     },
     {
-      icon: '⚡',
+      icon: '', // TODO - add different image
       title: 'Performance First',
-      description: 'Engineered for optimal grip, comfort, and performance while maintaining style and uniqueness.',
+      description: 'Engineered with premium materials including sustainable bamboo for superior grip, natural antimicrobial properties, and unmatched durability. Style that performs, performance that lasts.',
       color: 'var(--purple)'
     }
   ]

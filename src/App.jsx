@@ -4,6 +4,8 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Features from './components/Features'
 import PreLaunchForm from './components/PreLaunchForm'
+import PrivacyPolicy from './components/PrivacyPolicy'
+import TermsOfService from './components/TermsOfService'
 import Footer from './components/Footer'
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       <Hero scrollY={scrollY} />
       <Features scrollY={scrollY} />
       <PreLaunchForm />
+      <PrivacyPolicy />
+      <TermsOfService />
       <Footer />
     </div>
   )
